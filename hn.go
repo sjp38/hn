@@ -55,14 +55,10 @@ func main() {
 			err))
 	}
 
-	for idx, id := range bestStories {
+	for idx, id := range bestStories[0:10] {
 		item := fetchItem(id)
 		fmt.Printf("[%d] %s (%d)\n[%s]\n[%s]\n\n",
 			idx, item.Title, item.Score, item.Url,
 			fmt.Sprintf(HNItemURL+"%d", id))
-
-		if idx >= 9 {
-			break
-		}
 	}
 }
