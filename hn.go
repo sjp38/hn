@@ -39,16 +39,20 @@ func main() {
 	body := fetchURL(HNAPIURL + "beststories.json")
 
 	if err := json.Unmarshal(body, &bestStories); err != nil {
-		panic(fmt.Sprintf("error while unmarshal beststories: %s", err))
+		panic(fmt.Sprintf("error while unmarshal beststories: %s",
+			err))
 	}
 
 	var item Item
 	for idx, id := range bestStories {
 		body := fetchURL(fmt.Sprintf(HNAPIURL+"item/%d.json", id))
 		if err := json.Unmarshal(body, &item); err != nil {
-			panic(fmt.Sprintf("error while unmarshal item %s: %s", id, err))
+			panic(fmt.Sprintf("error while unmarshal item %s: %s",
+				id, err))
 		}
-		fmt.Printf("[%d] %s (%d)\n[%s]\n[%s]\n\n", idx, item.Title, item.Score, item.Url, fmt.Sprintf(HNItemURL+"%d", id))
+		fmt.Printf("[%d] %s (%d)\n[%s]\n[%s]\n\n",
+			idx, item.Title, item.Score, item.Url,
+			fmt.Sprintf(HNItemURL+"%d", id))
 
 		if idx >= 9 {
 			break
