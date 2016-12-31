@@ -65,7 +65,7 @@ func main() {
 	for i := 0; i < 10; i++ {
 		item := <-chans[i]
 		fmt.Printf("[%d] %s (%d)\n[%s]\n[%s]\n\n",
-			i, item.Title, item.Score, item.Url,
+			i+1, item.Title, item.Score, item.Url,
 			fmt.Sprintf(HNItemURL+"%d", item.Id))
 	}
 }
