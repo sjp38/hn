@@ -8,6 +8,7 @@ import (
 )
 
 const HNAPIURL = "https://hacker-news.firebaseio.com/v0/"
+const HNItemURL = "https://news.ycombinator.com/item?id="
 
 type Item struct {
 	Url   string
@@ -45,7 +46,7 @@ func main() {
 		if err := json.Unmarshal(body, &item); err != nil {
 			panic(fmt.Sprintf("error while unmarshal item %s: %s", id, err))
 		}
-		fmt.Printf("[%d] %s (%d)\n[%s]\n[%s]\n\n", idx, item.Title, item.Score, item.Url, fmt.Sprintf("https://news.ycombinator.com/item?id=%d", id))
+		fmt.Printf("[%d] %s (%d)\n[%s]\n[%s]\n\n", idx, item.Title, item.Score, item.Url, fmt.Sprintf(HNItemURL+"%d", id))
 
 		if idx >= 9 {
 			break
