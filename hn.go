@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	HNAPIURL = "https://hacker-news.firebaseio.com/v0/"
+	HNAPIURL  = "https://hacker-news.firebaseio.com/v0/"
 	HNItemURL = "https://news.ycombinator.com/item?id="
 )
 
