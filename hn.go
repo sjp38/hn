@@ -7,8 +7,10 @@ import (
 	"net/http"
 )
 
-const HNAPIURL = "https://hacker-news.firebaseio.com/v0/"
-const HNItemURL = "https://news.ycombinator.com/item?id="
+const (
+	HNAPIURL = "https://hacker-news.firebaseio.com/v0/"
+	HNItemURL = "https://news.ycombinator.com/item?id="
+)
 
 type Item struct {
 	Url   string
