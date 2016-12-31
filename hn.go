@@ -7,6 +7,8 @@ import (
 	"net/http"
 )
 
+const HNAPIURL = "https://hacker-news.firebaseio.com/v0/"
+
 type Item struct {
 	Url   string
 	Score int
@@ -31,7 +33,7 @@ func fetchURL(url string) []byte {
 func main() {
 	var bestStories []int
 
-	body := fetchURL("https://hacker-news.firebaseio.com/v0/beststories.json?print=pretty")
+	body := fetchURL(HNAPIURL + "beststories.json?print=pretty")
 
 	if err := json.Unmarshal(body, &bestStories); err != nil {
 		panic(fmt.Sprintf("error while unmarshal beststories: %s", err))
@@ -39,7 +41,7 @@ func main() {
 
 	var item Item
 	for idx, id := range bestStories {
-		body := fetchURL(fmt.Sprintf("https://hacker-news.firebaseio.com/v0/item/%d.json?print=pretty", id))
+		body := fetchURL(fmt.Sprintf(HNAPIURL+"item/%d.json?print=pretty", id))
 		if err := json.Unmarshal(body, &item); err != nil {
 			panic(fmt.Sprintf("error while unmarshal item %s: %s", id, err))
 		}
