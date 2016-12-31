@@ -13,6 +13,7 @@ const (
 )
 
 type hnItem struct {
+	Id    int
 	Url   string
 	Score int
 	Title string
@@ -33,7 +34,7 @@ func fetchURL(url string) []byte {
 	return body
 }
 
-func fetchItem(id int) hnItem {
+func fetchItem(id int, c chan hnItem) {
 	var item hnItem
 
 	body := fetchURL(fmt.Sprintf(HNAPIURL+"item/%d.json", id))
@@ -42,7 +43,7 @@ func fetchItem(id int) hnItem {
 			id, err))
 	}
 
-	return item
+	c <- item
 }
 
 func main() {
@@ -55,10 +56,16 @@ func main() {
 			err))
 	}
 
+	var chans [10]chan hnItem
 	for idx, id := range bestStories[0:10] {
-		item := fetchItem(id)
+		chans[idx] = make(chan hnItem)
+		go fetchItem(id, chans[idx])
+	}
+
+	for i := 0; i < 10; i++ {
+		item := <-chans[i]
 		fmt.Printf("[%d] %s (%d)\n[%s]\n[%s]\n\n",
-			idx, item.Title, item.Score, item.Url,
-			fmt.Sprintf(HNItemURL+"%d", id))
+			i, item.Title, item.Score, item.Url,
+			fmt.Sprintf(HNItemURL+"%d", item.Id))
 	}
 }
