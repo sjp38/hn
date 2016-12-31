@@ -33,6 +33,18 @@ func fetchURL(url string) []byte {
 	return body
 }
 
+func fetchItem(id int) hnItem {
+	var item hnItem
+
+	body := fetchURL(fmt.Sprintf(HNAPIURL+"item/%d.json", id))
+	if err := json.Unmarshal(body, &item); err != nil {
+		panic(fmt.Sprintf("error while unmarshal item %s: %s",
+			id, err))
+	}
+
+	return item
+}
+
 func main() {
 	var bestStories []int
 
@@ -43,13 +55,8 @@ func main() {
 			err))
 	}
 
-	var item hnItem
 	for idx, id := range bestStories {
-		body := fetchURL(fmt.Sprintf(HNAPIURL+"item/%d.json", id))
-		if err := json.Unmarshal(body, &item); err != nil {
-			panic(fmt.Sprintf("error while unmarshal item %s: %s",
-				id, err))
-		}
+		item := fetchItem(id)
 		fmt.Printf("[%d] %s (%d)\n[%s]\n[%s]\n\n",
 			idx, item.Title, item.Score, item.Url,
 			fmt.Sprintf(HNItemURL+"%d", id))
