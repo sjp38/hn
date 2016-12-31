@@ -47,17 +47,17 @@ func fetchItem(id int, c chan hnItem) {
 }
 
 func main() {
-	var bestStories []int
+	var topStories []int
 
-	body := fetchURL(HNAPIURL + "beststories.json")
+	body := fetchURL(HNAPIURL + "topstories.json")
 
-	if err := json.Unmarshal(body, &bestStories); err != nil {
-		panic(fmt.Sprintf("error while unmarshal beststories: %s",
+	if err := json.Unmarshal(body, &topStories); err != nil {
+		panic(fmt.Sprintf("error while unmarshal topstories: %s",
 			err))
 	}
 
 	var chans [10]chan hnItem
-	for idx, id := range bestStories[0:10] {
+	for idx, id := range topStories[0:10] {
 		chans[idx] = make(chan hnItem)
 		go fetchItem(id, chans[idx])
 	}
