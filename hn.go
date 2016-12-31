@@ -1,7 +1,52 @@
 package main
 
-import "fmt"
+import (
+	"encoding/json"
+	"fmt"
+	"io/ioutil"
+	"net/http"
+)
+
+type Item struct {
+	Url   string
+	Score int
+	Title string
+}
+
+func fetchURL(url string) []byte {
+	resp, err := http.Get(url)
+	if err != nil {
+		panic(fmt.Sprintf("error while get %s: %s", url, err))
+	}
+
+	body, err := ioutil.ReadAll(resp.Body)
+	resp.Body.Close()
+	if err != nil {
+		panic(fmt.Sprintf("failed to read body: %s", err))
+	}
+
+	return body
+}
 
 func main() {
-	fmt.Printf("Hello\n")
+	var bestStories []int
+
+	body := fetchURL("https://hacker-news.firebaseio.com/v0/beststories.json?print=pretty")
+
+	if err := json.Unmarshal(body, &bestStories); err != nil {
+		panic(fmt.Sprintf("error while unmarshal beststories: %s", err))
+	}
+
+	var item Item
+	for idx, id := range bestStories {
+		body := fetchURL(fmt.Sprintf("https://hacker-news.firebaseio.com/v0/item/%d.json?print=pretty", id))
+		if err := json.Unmarshal(body, &item); err != nil {
+			panic(fmt.Sprintf("error while unmarshal item %s: %s", id, err))
+		}
+		fmt.Printf("%s (%d)\n[%s]\n[%s]\n\n", item.Title, item.Score, item.Url, fmt.Sprintf("https://news.ycombinator.com/item?id=%d", id))
+
+		if idx >= 9 {
+			break
+		}
+	}
 }
