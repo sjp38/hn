@@ -4,6 +4,12 @@ hn
 Command Line Interface tool for hacker news[0].
 
 
+Usage
+=====
+
+Just type `go run hn.go` if your system has go environment.
+
+
 License
 =======
 
