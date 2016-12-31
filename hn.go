@@ -12,7 +12,7 @@ const (
 	HNItemURL = "https://news.ycombinator.com/item?id="
 )
 
-type Item struct {
+type hnItem struct {
 	Url   string
 	Score int
 	Title string
@@ -43,7 +43,7 @@ func main() {
 			err))
 	}
 
-	var item Item
+	var item hnItem
 	for idx, id := range bestStories {
 		body := fetchURL(fmt.Sprintf(HNAPIURL+"item/%d.json", id))
 		if err := json.Unmarshal(body, &item); err != nil {
