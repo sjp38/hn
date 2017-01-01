@@ -50,12 +50,13 @@ func fetchItem(id int, c chan hnItem) {
 func main() {
 	nrListItems := flag.Int("nrItems", 10, "Number of items to print out")
 	verbose := flag.Bool("verbose", false, "Print out verbose information")
+	category := flag.String("category", "top", "Category of items to show")
 
 	flag.Parse()
 
 	var topStories []int
 
-	body := fetchURL(hnAPIURL + "topstories.json")
+	body := fetchURL(hnAPIURL + *category + "stories.json")
 
 	if err := json.Unmarshal(body, &topStories); err != nil {
 		panic(fmt.Sprintf("error while unmarshal topstories: %s",
