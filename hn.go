@@ -85,6 +85,10 @@ func main() {
 	}
 
 	output := ""
+	if *verbose {
+		output += fmt.Sprintf("# %d %s stories\n\n",
+			*nrListItems, *category)
+	}
 	for i := 0; i < *nrListItems; i++ {
 		item := <-chans[i]
 		output += fmt.Sprintf("[%d] %s (%d)\n", i+1, item.Title, item.Score)
