@@ -54,7 +54,8 @@ func ensureValidCat(cat *string) {
 			return
 		}
 	}
-	fmt.Fprintf(os.Stderr, "Wrong category %s\n", *cat)
+	fmt.Fprintf(os.Stderr, "Wrong category %s.\n\n", *cat)
+	fmt.Fprintf(os.Stderr, "Usage of %s:\n", os.Args[0])
 	flag.PrintDefaults()
 	os.Exit(2)
 }
