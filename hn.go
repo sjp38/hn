@@ -49,6 +49,7 @@ func fetchItem(id int, c chan hnItem) {
 
 func main() {
 	nrListItems := flag.Int("nrItems", 10, "Number of items to print out")
+	verbose := flag.Bool("verbose", false, "Print out verbose information")
 
 	flag.Parse()
 
@@ -67,10 +68,14 @@ func main() {
 		go fetchItem(id, chans[idx])
 	}
 
+	output := ""
 	for i := 0; i < *nrListItems; i++ {
 		item := <-chans[i]
-		fmt.Printf("[%d] %s (%d)\n[%s]\n[%s]\n\n",
-			i+1, item.Title, item.Score, item.Url,
-			fmt.Sprintf(hnItemURL+"%d", item.Id))
+		output += fmt.Sprintf("[%d] %s (%d)\n", i+1, item.Title, item.Score)
+		if *verbose {
+			output += fmt.Sprintf("[%s]\n[%s]\n\n", item.Url,
+				fmt.Sprintf(hnItemURL+"%d", item.Id))
+		}
 	}
+	fmt.Printf("%s", output)
 }
