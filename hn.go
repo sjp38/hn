@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"os"
 )
 
 const (
@@ -50,9 +51,23 @@ func fetchItem(id int, c chan hnItem) {
 func main() {
 	nrListItems := flag.Int("nrItems", 10, "Number of items to print out")
 	verbose := flag.Bool("verbose", false, "Print out verbose information")
-	category := flag.String("category", "top", "Category of items to show")
+	category := flag.String("category", "top",
+		"Category of items to show.  It should be top, new, or best")
 
 	flag.Parse()
+
+	validCat := false
+	for _, cat := range []string{"top", "new", "best"} {
+		if *category == cat {
+			validCat = true
+			break
+		}
+	}
+	if !validCat {
+		fmt.Fprintf(os.Stderr, "Wrong category %s\n", *category)
+		flag.PrintDefaults()
+		os.Exit(2)
+	}
 
 	var topStories []int
 
