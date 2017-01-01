@@ -49,49 +49,49 @@ func fetchItem(id int, c chan hnItem) {
 }
 
 func main() {
-	nrListItems := flag.Int("nrItems", 10, "Number of items to print out")
+	nrItems := flag.Int("nrItems", 10, "Number of items to print out")
 	verbose := flag.Bool("verbose", false, "Print out verbose information")
-	category := flag.String("category", "top",
+	cat := flag.String("category", "top",
 		"Category of items to show.  It should be top, new, or best")
 
 	flag.Parse()
 
 	validCat := false
-	for _, cat := range []string{"top", "new", "best"} {
-		if *category == cat {
+	for _, c := range []string{"top", "new", "best"} {
+		if *cat == c {
 			validCat = true
 			break
 		}
 	}
 	if !validCat {
-		fmt.Fprintf(os.Stderr, "Wrong category %s\n", *category)
+		fmt.Fprintf(os.Stderr, "Wrong category %s\n", *cat)
 		flag.PrintDefaults()
 		os.Exit(2)
 	}
 
 	var topStories []int
 
-	body := fetchURL(hnAPIURL + *category + "stories.json")
+	body := fetchURL(hnAPIURL + *cat + "stories.json")
 
 	if err := json.Unmarshal(body, &topStories); err != nil {
 		panic(fmt.Sprintf("error while unmarshal topstories: %s",
 			err))
 	}
 
-	var chans = make([]chan hnItem, *nrListItems)
-	for idx, id := range topStories[:*nrListItems] {
+	var chans = make([]chan hnItem, *nrItems)
+	for idx, id := range topStories[:*nrItems] {
 		chans[idx] = make(chan hnItem)
 		go fetchItem(id, chans[idx])
 	}
 
 	output := ""
 	if *verbose {
-		output += fmt.Sprintf("# %d %s stories\n\n",
-			*nrListItems, *category)
+		output += fmt.Sprintf("# %d %s stories\n\n", *nrItems, *cat)
 	}
-	for i := 0; i < *nrListItems; i++ {
+	for i := 0; i < *nrItems; i++ {
 		item := <-chans[i]
-		output += fmt.Sprintf("[%d] %s (%d)\n", i+1, item.Title, item.Score)
+		output += fmt.Sprintf("[%d] %s (%d)\n",
+			i+1, item.Title, item.Score)
 		if *verbose {
 			output += fmt.Sprintf("[%s]\n[%s]\n\n", item.Url,
 				fmt.Sprintf(hnItemURL+"%d", item.Id))
