@@ -8,8 +8,8 @@ import (
 )
 
 const (
-	HNAPIURL  = "https://hacker-news.firebaseio.com/v0/"
-	HNItemURL = "https://news.ycombinator.com/item?id="
+	hnAPIURL  = "https://hacker-news.firebaseio.com/v0/"
+	hnItemURL = "https://news.ycombinator.com/item?id="
 )
 
 type hnItem struct {
@@ -37,7 +37,7 @@ func fetchURL(url string) []byte {
 func fetchItem(id int, c chan hnItem) {
 	var item hnItem
 
-	body := fetchURL(fmt.Sprintf(HNAPIURL+"item/%d.json", id))
+	body := fetchURL(fmt.Sprintf(hnAPIURL+"item/%d.json", id))
 	if err := json.Unmarshal(body, &item); err != nil {
 		panic(fmt.Sprintf("error while unmarshal item %s: %s",
 			id, err))
@@ -49,7 +49,7 @@ func fetchItem(id int, c chan hnItem) {
 func main() {
 	var topStories []int
 
-	body := fetchURL(HNAPIURL + "topstories.json")
+	body := fetchURL(hnAPIURL + "topstories.json")
 
 	if err := json.Unmarshal(body, &topStories); err != nil {
 		panic(fmt.Sprintf("error while unmarshal topstories: %s",
@@ -66,6 +66,6 @@ func main() {
 		item := <-chans[i]
 		fmt.Printf("[%d] %s (%d)\n[%s]\n[%s]\n\n",
 			i+1, item.Title, item.Score, item.Url,
-			fmt.Sprintf(HNItemURL+"%d", item.Id))
+			fmt.Sprintf(hnItemURL+"%d", item.Id))
 	}
 }
