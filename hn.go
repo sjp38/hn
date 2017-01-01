@@ -49,18 +49,14 @@ func fetchItem(id int, c chan hnItem) {
 }
 
 func ensureValidCat(cat *string) {
-	validCat := false
 	for _, c := range []string{"top", "new", "best"} {
 		if *cat == c {
-			validCat = true
-			break
+			return
 		}
 	}
-	if !validCat {
-		fmt.Fprintf(os.Stderr, "Wrong category %s\n", *cat)
-		flag.PrintDefaults()
-		os.Exit(2)
-	}
+	fmt.Fprintf(os.Stderr, "Wrong category %s\n", *cat)
+	flag.PrintDefaults()
+	os.Exit(2)
 }
 
 func main() {
