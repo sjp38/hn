@@ -10,6 +10,7 @@ import (
 const (
 	hnAPIURL  = "https://hacker-news.firebaseio.com/v0/"
 	hnItemURL = "https://news.ycombinator.com/item?id="
+	nrListItems = 10
 )
 
 type hnItem struct {
@@ -56,13 +57,13 @@ func main() {
 			err))
 	}
 
-	var chans [10]chan hnItem
-	for idx, id := range topStories[0:10] {
+	var chans [nrListItems]chan hnItem
+	for idx, id := range topStories[0:nrListItems] {
 		chans[idx] = make(chan hnItem)
 		go fetchItem(id, chans[idx])
 	}
 
-	for i := 0; i < 10; i++ {
+	for i := 0; i < nrListItems; i++ {
 		item := <-chans[i]
 		fmt.Printf("[%d] %s (%d)\n[%s]\n[%s]\n\n",
 			i+1, item.Title, item.Score, item.Url,
