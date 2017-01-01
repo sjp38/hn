@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"flag"
 	"fmt"
 	"io/ioutil"
 	"net/http"
@@ -10,7 +11,6 @@ import (
 const (
 	hnAPIURL  = "https://hacker-news.firebaseio.com/v0/"
 	hnItemURL = "https://news.ycombinator.com/item?id="
-	nrListItems = 10
 )
 
 type hnItem struct {
@@ -48,6 +48,10 @@ func fetchItem(id int, c chan hnItem) {
 }
 
 func main() {
+	nrListItems := flag.Int("nrItems", 10, "Number of items to print out")
+
+	flag.Parse()
+
 	var topStories []int
 
 	body := fetchURL(hnAPIURL + "topstories.json")
@@ -57,13 +61,13 @@ func main() {
 			err))
 	}
 
-	var chans [nrListItems]chan hnItem
-	for idx, id := range topStories[0:nrListItems] {
+	var chans = make([]chan hnItem, *nrListItems)
+	for idx, id := range topStories[0:*nrListItems] {
 		chans[idx] = make(chan hnItem)
 		go fetchItem(id, chans[idx])
 	}
 
-	for i := 0; i < nrListItems; i++ {
+	for i := 0; i < *nrListItems; i++ {
 		item := <-chans[i]
 		fmt.Printf("[%d] %s (%d)\n[%s]\n[%s]\n\n",
 			i+1, item.Title, item.Score, item.Url,
