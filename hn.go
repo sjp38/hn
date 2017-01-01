@@ -62,7 +62,7 @@ func main() {
 	}
 
 	var chans = make([]chan hnItem, *nrListItems)
-	for idx, id := range topStories[0:*nrListItems] {
+	for idx, id := range topStories[:*nrListItems] {
 		chans[idx] = make(chan hnItem)
 		go fetchItem(id, chans[idx])
 	}
