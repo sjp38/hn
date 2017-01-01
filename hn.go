@@ -48,14 +48,7 @@ func fetchItem(id int, c chan hnItem) {
 	c <- item
 }
 
-func main() {
-	nrItems := flag.Int("nrItems", 10, "Number of items to print out")
-	verbose := flag.Bool("verbose", false, "Print out verbose information")
-	cat := flag.String("category", "top",
-		"Category of items to show.  It should be top, new, or best")
-
-	flag.Parse()
-
+func ensureValidCat(cat *string) {
 	validCat := false
 	for _, c := range []string{"top", "new", "best"} {
 		if *cat == c {
@@ -68,6 +61,17 @@ func main() {
 		flag.PrintDefaults()
 		os.Exit(2)
 	}
+}
+
+func main() {
+	nrItems := flag.Int("nrItems", 10, "Number of items to print out")
+	verbose := flag.Bool("verbose", false, "Print out verbose information")
+	cat := flag.String("category", "top",
+		"Category of items to show.  It should be top, new, or best")
+
+	flag.Parse()
+
+	ensureValidCat(cat)
 
 	var topStories []int
 
