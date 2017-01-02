@@ -13,45 +13,84 @@ setup.  If your system has Go development environment, just `$ go run hn.go`.
 It will print out top ten stories of hacker news in simple form like below:
 ```
 $ go run hn.go
-[1] Be Careful with Python's New-Style String Format (162)
-[http://lucumr.pocoo.org/2016/12/29/careful-with-str-format/]
-[https://news.ycombinator.com/item?id=13292350]
+[1] Three.js editor (139)
+[2] What Could Have Entered the Public Domain on January 1, 2017 (416)
+[3] Ask HN: Excluding WordPress, what is your favorite for blogs or small stores? (56)
+[4] Why do traders in investment banks feel their jobs are immune from AI, etc? (113)
+[5] Recreating 3D renderings in real life (166)
+[6] IR is better than assembly (2013) (129)
+[7] Lenovo ThinkPad T460 – A Good Linux Laptop for Development (125)
+[8] The moving sofa problem (526)
+[9] Ask HN: What is your side project for 2017? (19)
+[10] How I Write Tests (255)
+```
 
-[2] Deep Learning 2016: The Year in Review (117)
-[http://www.deeplearningweekly.com/blog/deep-learning-2016-the-year-in-review]
-[https://news.ycombinator.com/item?id=13291640]
 
-[3] Silicon Valley's obscure unicorns could boost 2017 IPO market (34)
-[http://www.reuters.com/article/us-technology-ipos-idUSKBN14J0GY]
-[https://news.ycombinator.com/item?id=13283624]
+Options
+-------
 
-[4] Implementing Function Spreadsheets (2008) [pdf] (12)
-[https://pdfs.semanticscholar.org/ab87/31cd70495b715acd33ba683c94c47e88ea14.pdf]
-[https://news.ycombinator.com/item?id=13282127]
+It also provides few command line options.  You can show description about that
+using `-help` option as below:
+```
+$ go run hn.go -help
+  -category string
+        Category of items to show.  It should be top, new, or best (default "top")
+  -nrItems int
+        Number of items to print out (default 10)
+  -verbose
+        Print out verbose information
+```
 
-[5] Recursive Anonymous Functions in Elixir: Combinators and Macros (20)
-[https://github.com/jisaacstone/ex_rfn]
-[https://news.ycombinator.com/item?id=13291798]
 
-[6] A Paper Algorithm Notation (44)
-[http://canonical.org/~kragen/sw/dev3/paperalgo]
-[https://news.ycombinator.com/item?id=13286503]
+Verbose output
+--------------
 
-[7] Russia Hysteria Infects WashPost: False Story About Hacking U.S. Electric Grid (144)
-[https://theintercept.com/2016/12/31/russia-hysteria-infects-washpost-again-false-story-about-hacking-u-s-electric-grid/]
-[https://news.ycombinator.com/item?id=13292607]
+While default execution output has only title and score of each stories, you
+can also show more detailed information including URLs for each story using
+`-verbose` option as below:
+```
+$ go run hn.go -verbose
+# 10 top stories
 
-[8] Interactive Map: The Flow of International Trade (8)
-[http://www.visualcapitalist.com/interactive-mapping-flow-international-trade/]
-[https://news.ycombinator.com/item?id=13293008]
+[1] Three.js editor (143)
+[https://threejs.org/editor/]
+[https://news.ycombinator.com/item?id=13299479]
 
-[9] To Make the World Better, Think Small (29)
-[http://www.nytimes.com/2016/12/30/opinion/to-make-the-world-better-think-small.html?action=click&pgtype=Homepage&clickSource=story-heading&module=opinion-c-col-left-region&region=opinion-c-col-left-region&WT.nav=opinion-c-col-left-region&_r=0]
-[https://news.ycombinator.com/item?id=13292238]
+[2] What Could Have Entered the Public Domain on January 1, 2017 (418)
+[https://web.law.duke.edu/cspd/publicdomainday/2017/pre-1976]
+[https://news.ycombinator.com/item?id=13297792]
 
-[10] The IT security culture, hackers vs. industry consortia (55)
-[http://laforge.gnumonks.org/blog/20161206-it_security_culture_telecoms/]
-[https://news.ycombinator.com/item?id=13291594]
+[3] Ask HN: Excluding WordPress, what is your favorite for blogs or small stores? (57)
+[]
+[https://news.ycombinator.com/item?id=13300023]
+
+[4] Why do traders in investment banks feel their jobs are immune from AI, etc? (114)
+[https://www.quora.com/Why-do-traders-in-investment-banks-feel-their-jobs-are-immune-from-AI-automation-and-deep-learning]
+[https://news.ycombinator.com/item?id=13299311]
+
+[5] Recreating 3D renderings in real life (168)
+[http://skrekkogle.com/still-file/]
+[https://news.ycombinator.com/item?id=13298004]
+
+[6] IR is better than assembly (2013) (129)
+[https://idea.popcount.org/2013-07-24-ir-is-better-than-assembly/]
+[https://news.ycombinator.com/item?id=13297424]
+
+[7] Lenovo ThinkPad T460 – A Good Linux Laptop for Development (127)
+[https://karussell.wordpress.com/2017/01/02/lenovo-thinkpad-t460-a-good-linux-laptop-for-development/]
+[https://news.ycombinator.com/item?id=13299585]
+
+[8] The moving sofa problem (527)
+[https://www.math.ucdavis.edu/~romik/movingsofa/]
+[https://news.ycombinator.com/item?id=13296502]
+
+[9] Ask HN: What is your side project for 2017? (21)
+[]
+[https://news.ycombinator.com/item?id=13300178]
+
+[10] Swiss say goodbye to banking secrecy (47)
+[http://www.swissinfo.ch/eng/business/tax-evasion_swiss-say-goodbye-to-banking-secrecy-/42799134]
+[https://news.ycombinator.com/item?id=13298021]
 ```
 
 
