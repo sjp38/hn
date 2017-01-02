@@ -64,7 +64,7 @@ func main() {
 	nrItems := flag.Int("nrItems", 10, "Number of items to print out")
 	verbose := flag.Bool("verbose", false, "Print out verbose information")
 	cat := flag.String("category", "top",
-		"Category of items to show.  It should be top, new, or best")
+		"Category of items to show.  It should be (top|new|best)")
 
 	flag.Parse()
 
