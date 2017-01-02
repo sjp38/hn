@@ -33,12 +33,14 @@ It also provides few command line options.  You can show description about that
 using `-help` option as below:
 ```
 $ go run hn.go -help
+Usage of /tmp/go-build878980624/command-line-arguments/_obj/exe/hn:
   -category string
-        Category of items to show.  It should be top, new, or best (default "top")
+        Category of items to show.  It should be (top|new|best) (default "top")
   -nrItems int
         Number of items to print out (default 10)
   -verbose
         Print out verbose information
+exit status 2
 ```
 
 
