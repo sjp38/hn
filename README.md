@@ -38,6 +38,10 @@ Usage of /tmp/go-build878980624/command-line-arguments/_obj/exe/hn:
         Category of items to show.  It should be (top|new|best) (default "top")
   -nrItems int
         Number of items to print out (default 10)
+  -showCommentURL
+        Show URL for HN comments
+  -showOrigURL
+        Show URL for the story
   -showURLs
         Show URLs for the story and HN comments
 exit status 2
