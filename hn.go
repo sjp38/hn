@@ -71,8 +71,8 @@ func main() {
 		"Show URL for HN comments")
 	showURLs := flag.Bool("showURLs", false,
 		"Show URLs for the story and HN comments")
-	verbose := flag.Bool("verbose", false,
-		"Show verbose output")
+	showTitle := flag.Bool("showTitle", false,
+		"Show Title")
 
 	flag.Parse()
 
@@ -94,7 +94,7 @@ func main() {
 	}
 
 	output := ""
-	if *verbose {
+	if *showTitle {
 		title := fmt.Sprintf("%s %d stories", *cat, *nrItems)
 		output += title + "\n"
 		title = strings.Repeat("=", len(title))
