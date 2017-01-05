@@ -64,7 +64,8 @@ func main() {
 	nrItems := flag.Int("nrItems", 10, "Number of items to print out")
 	cat := flag.String("category", "top",
 		"Category of items to show.  It should be (top|new|best)")
-	verbose := flag.Bool("verbose", false, "Print out verbose information")
+	showURLs := flag.Bool("showURLs", false,
+		"Show URLs for the story and HN comments")
 
 	flag.Parse()
 
@@ -86,14 +87,14 @@ func main() {
 	}
 
 	output := ""
-	if *verbose {
+	if *showURLs {
 		output += fmt.Sprintf("# %d %s stories\n\n", *nrItems, *cat)
 	}
 	for i := 0; i < *nrItems; i++ {
 		item := <-chans[i]
 		output += fmt.Sprintf("[%d] %s (%d)\n",
 			i+1, item.Title, item.Score)
-		if *verbose {
+		if *showURLs {
 			output += fmt.Sprintf("[%s]\n[%s]\n\n", item.Url,
 				fmt.Sprintf(hnItemURL+"%d", item.Id))
 		}

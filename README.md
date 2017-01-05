@@ -38,20 +38,20 @@ Usage of /tmp/go-build878980624/command-line-arguments/_obj/exe/hn:
         Category of items to show.  It should be (top|new|best) (default "top")
   -nrItems int
         Number of items to print out (default 10)
-  -verbose
-        Print out verbose information
+  -showURLs
+        Show URLs for the story and HN comments
 exit status 2
 ```
 
 
-Verbose output
---------------
+ShowURLs option
+---------------
 
 While default execution output has only title and score of each stories, you
 can also show more detailed information including URLs for each story using
-`-verbose` option as below:
+`-showURLs` option as below:
 ```
-$ go run hn.go -verbose
+$ go run hn.go -showURLs
 # 10 top stories
 
 [1] Three.js editor (143)
