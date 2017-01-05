@@ -7,6 +7,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
+	"strings"
 )
 
 const (
@@ -94,7 +95,10 @@ func main() {
 
 	output := ""
 	if *verbose {
-		output += fmt.Sprintf("# %d %s stories\n\n", *nrItems, *cat)
+		title := fmt.Sprintf("%s %d stories", *cat, *nrItems)
+		output += title + "\n"
+		title = strings.Repeat("=", len(title))
+		output += title + "\n\n"
 	}
 
 	if *showURLs {
