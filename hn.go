@@ -15,6 +15,20 @@ const (
 	hnItemURL = "https://news.ycombinator.com/item?id="
 )
 
+var (
+	nrItems = flag.Int("nrItems", 10, "Number of items to print out")
+	cat = flag.String("category", "top",
+		"Category of items to show.  It should be (top|new|best)")
+	showOrigURL = flag.Bool("showOrigURL", false,
+		"Show URL for the story")
+	showCommentURL = flag.Bool("showCommentURL", false,
+		"Show URL for HN comments")
+	showURLs = flag.Bool("showURLs", false,
+		"Show URLs for the story and HN comments")
+	showTitle = flag.Bool("showTitle", false,
+		"Show Title")
+)
+
 type hnItem struct {
 	Id    int
 	Url   string
@@ -62,17 +76,6 @@ func ensureValidCat(cat *string) {
 }
 
 func main() {
-	nrItems := flag.Int("nrItems", 10, "Number of items to print out")
-	cat := flag.String("category", "top",
-		"Category of items to show.  It should be (top|new|best)")
-	showOrigURL := flag.Bool("showOrigURL", false,
-		"Show URL for the story")
-	showCommentURL := flag.Bool("showCommentURL", false,
-		"Show URL for HN comments")
-	showURLs := flag.Bool("showURLs", false,
-		"Show URLs for the story and HN comments")
-	showTitle := flag.Bool("showTitle", false,
-		"Show Title")
 
 	flag.Parse()
 
