@@ -70,6 +70,8 @@ func main() {
 		"Show URL for HN comments")
 	showURLs := flag.Bool("showURLs", false,
 		"Show URLs for the story and HN comments")
+	verbose := flag.Bool("verbose", false,
+		"Show verbose output")
 
 	flag.Parse()
 
@@ -91,8 +93,11 @@ func main() {
 	}
 
 	output := ""
-	if *showURLs {
+	if *verbose {
 		output += fmt.Sprintf("# %d %s stories\n\n", *nrItems, *cat)
+	}
+
+	if *showURLs {
 		*showOrigURL = true
 		*showCommentURL = true
 	}

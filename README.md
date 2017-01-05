@@ -44,6 +44,8 @@ Usage of /tmp/go-build878980624/command-line-arguments/_obj/exe/hn:
         Show URL for the story
   -showURLs
         Show URLs for the story and HN comments
+  -verbose
+        Show verbose output
 exit status 2
 ```
 
