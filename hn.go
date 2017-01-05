@@ -84,7 +84,6 @@ func main() {
 	var topStories []int
 
 	body := fetchURL(hnAPIURL + *cat + "stories.json")
-
 	if err := json.Unmarshal(body, &topStories); err != nil {
 		panic(fmt.Sprintf("error while unmarshal topstories: %s",
 			err))
@@ -108,6 +107,7 @@ func main() {
 		*showOrigURL = true
 		*showCommentURL = true
 	}
+
 	for i := 0; i < *nrItems; i++ {
 		item := <-chans[i]
 		output += fmt.Sprintf("[%d] %s (%d)\n",
