@@ -17,7 +17,7 @@ const (
 
 var (
 	nrItems = flag.Int("nrItems", 10, "Number of items to print out")
-	cat = flag.String("category", "top",
+	cat     = flag.String("category", "top",
 		"Category of items to show.  It should be (top|new|best)")
 	showOrigURL = flag.Bool("showOrigURL", false,
 		"Show URL for the story")
@@ -81,16 +81,16 @@ func main() {
 
 	ensureValidCat(cat)
 
-	var topStories []int
+	var storyIDs []int
 
 	body := fetchURL(hnAPIURL + *cat + "stories.json")
-	if err := json.Unmarshal(body, &topStories); err != nil {
+	if err := json.Unmarshal(body, &storyIDs); err != nil {
 		panic(fmt.Sprintf("error while unmarshal topstories: %s",
 			err))
 	}
 
 	var chans = make([]chan hnItem, *nrItems)
-	for idx, id := range topStories[:*nrItems] {
+	for idx, id := range storyIDs[:*nrItems] {
 		chans[idx] = make(chan hnItem)
 		go fetchItem(id, chans[idx])
 	}
