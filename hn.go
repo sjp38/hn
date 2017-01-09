@@ -89,6 +89,12 @@ func main() {
 			err))
 	}
 
+	if *nrItems > len(storyIDs) {
+		fmt.Fprintf(os.Stderr, "Too many items required: %d > %d.\n",
+			*nrItems, len(storyIDs))
+		os.Exit(1)
+	}
+
 	var chans = make([]chan hnItem, *nrItems)
 	for idx, id := range storyIDs[:*nrItems] {
 		chans[idx] = make(chan hnItem)
