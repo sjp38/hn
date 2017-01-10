@@ -1,18 +1,23 @@
 hn
 ==
 
-Command Line Interface tool for hacker news[0].
+A CLI(Command Line Interface) tool for hacker news[0].
+
+
+Setup
+=====
+
+First of all, ensure that your system has Go development environment[1].  Then,
+just `$ go get github.com/sjp38/hn` from your shell.
 
 
 Usage
 =====
 
-Because this program is written in Go, you need Go development environment[1]
-setup.  If your system has Go development environment, just `$ go run hn.go`.
-
-It will print out top ten stories of hacker news in simple form like below:
+Basic usage is `hn [options]`.  With no option, it will print out top ten
+stories of hacker news in simple form like below:
 ```
-$ go run hn.go
+$ hn
 [1] Three.js editor (139)
 [2] What Could Have Entered the Public Domain on January 1, 2017 (416)
 [3] Ask HN: Excluding WordPress, what is your favorite for blogs or small stores? (56)
@@ -25,6 +30,8 @@ $ go run hn.go
 [10] How I Write Tests (255)
 ```
 
+Number inside parantheses is the HN score of the story.
+
 
 Options
 -------
@@ -32,8 +39,8 @@ Options
 It also provides few command line options.  You can show description about that
 using `-help` option as below:
 ```
-$ go run hn.go -help
-Usage of /tmp/go-build878980624/command-line-arguments/_obj/exe/hn:
+$ hn -help
+Usage of hn:
   -category string
         Category of items to show.  It should be (top|new|best) (default "top")
   -nrItems int
