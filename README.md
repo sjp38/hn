@@ -1,21 +1,22 @@
 hn
 ==
 
-A CLI(Command Line Interface) tool for hacker news[0].
+A CLI(Command Line Interface) tool for hacker news[0] reading.
 
 
 Setup
 =====
 
-First of all, ensure that your system has Go development environment[1].  Then,
-just `$ go get github.com/sjp38/hn` from your shell.
+- Ensure that your system has Go development environment[1].
+- Type `$ go get github.com/sjp38/hn` from your shell.
+- That's it!
 
 
 Usage
 =====
 
-Basic usage is `hn [options]`.  With no option, it will print out top ten
-stories of hacker news in simple form like below:
+Basic usage is `hn [options]`.  Without option, it will print out top ten
+stories of hacker news in brief form like below:
 ```
 $ hn
 [1] U.S. sues Oracle, alleges salary and hiring discrimination (247)
@@ -30,7 +31,7 @@ $ hn
 [10] Iceland knows how to stop teen substance abuse (67)
 ```
 
-Number inside parantheses is the HN score of the story.
+Each number inside parantheses is the HN score of the story.
 
 
 Options
