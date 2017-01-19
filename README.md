@@ -65,45 +65,46 @@ can also show more detailed information including URLs for each story using
 `-showURLs` option as below:
 ```
 $ go run hn.go -showURLs
-[1] U.S. sues Oracle, alleges salary and hiring discrimination (247)
-(http://www.reuters.com/article/us-oracle-usa-labor-idUSKBN1522O6?il=0)
-(https://news.ycombinator.com/item?id=13430222)
+[1] U.S. sues Oracle, alleges salary and hiring discrimination (253)
+    (http://www.reuters.com/article/us-oracle-usa-labor-idUSKBN1522O6?il=0)
+    (https://news.ycombinator.com/item?id=13430222)
 
 [2] What I Wish I'd Known About Equity Before Joining a Unicorn (934)
-(https://gist.github.com/yossorion/4965df74fd6da6cdc280ec57e83a202d)
-(https://news.ycombinator.com/item?id=13426494)
+    (https://gist.github.com/yossorion/4965df74fd6da6cdc280ec57e83a202d)
+    (https://news.ycombinator.com/item?id=13426494)
 
-[3] Too much sitting, too little exercise accelerate biological aging (13)
-(http://sciencebulletin.org/archives/9448.html)
-(https://news.ycombinator.com/item?id=13431806)
+[3] Too much sitting, too little exercise accelerate biological aging (16)
+    (http://sciencebulletin.org/archives/9448.html)
+    (https://news.ycombinator.com/item?id=13431806)
 
-[4] PyTorch – Tensors and Dynamic neural networks in Python (313)
-(http://pytorch.org/)
-(https://news.ycombinator.com/item?id=13428098)
+[4] PyTorch – Tensors and Dynamic neural networks in Python (317)
+    (http://pytorch.org/)
+    (https://news.ycombinator.com/item?id=13428098)
 
-[5] Welcoming Fabric to Google (249)
-(https://firebase.googleblog.com/2017/01/FabricJoinsGoogle17.html)
-(https://news.ycombinator.com/item?id=13428595)
+[5] Welcoming Fabric to Google (251)
+    (https://firebase.googleblog.com/2017/01/FabricJoinsGoogle17.html)
+    (https://news.ycombinator.com/item?id=13428595)
 
-[6] Caching at Reddit (147)
-(https://redditblog.com/2017/1/17/caching-at-reddit/)
-(https://news.ycombinator.com/item?id=13429314)
+[6] Go vs. Swift [pdf] (53)
+    (https://github.com/jakerockland/go-vs-swift/blob/master/go-vs-swift.pdf)
+    (https://news.ycombinator.com/item?id=13430640)
 
-[7] Rust vs. Go (303)
-(https://blog.ntpsec.org/2017/01/18/rust-vs-go.html)
-(https://news.ycombinator.com/item?id=13430108)
+[7] Caching at Reddit (149)
+    (https://redditblog.com/2017/1/17/caching-at-reddit/)
+    (https://news.ycombinator.com/item?id=13429314)
 
-[8] How the Human Brain Decides What Is Important and What’s Not (32)
-(http://neurosciencenews.com/importance-neuroscience-decisions-5967/)
-(https://news.ycombinator.com/item?id=13430892)
+[8] How the Human Brain Decides What Is Important and What’s Not (33)
+    (http://neurosciencenews.com/importance-neuroscience-decisions-5967/)
+    (https://news.ycombinator.com/item?id=13430892)
 
-[9] Go vs. Swift [pdf] (50)
-(https://github.com/jakerockland/go-vs-swift/blob/master/go-vs-swift.pdf)
-(https://news.ycombinator.com/item?id=13430640)
+[9] Rust vs. Go (306)
+    (https://blog.ntpsec.org/2017/01/18/rust-vs-go.html)
+    (https://news.ycombinator.com/item?id=13430108)
 
-[10] Iceland knows how to stop teen substance abuse (67)
-(https://mosaicscience.com/story/iceland-prevent-teen-substance-abuse)
-(https://news.ycombinator.com/item?id=13430547)
+[10] Playing with 80M Amazon Product Review Ratings Using Apache Spark (100)
+     (http://minimaxir.com/2017/01/amazon-spark/)
+     (https://news.ycombinator.com/item?id=13429656)
+
 ```
 
 
