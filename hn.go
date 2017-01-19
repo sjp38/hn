@@ -119,9 +119,13 @@ func main() {
 		output += fmt.Sprintf("[%d] %s (%d)\n",
 			i+1, item.Title, item.Score)
 		if *showOrigURL {
+			output += strings.Repeat(" ",
+				len(fmt.Sprintf("[%d] ", i+1)))
 			output += fmt.Sprintf("(%s)\n", item.Url)
 		}
 		if *showCommentURL {
+			output += strings.Repeat(" ",
+				len(fmt.Sprintf("[%d] ", i+1)))
 			output += fmt.Sprintf("(%s)\n",
 				fmt.Sprintf(hnItemURL+"%d", item.Id))
 		}
