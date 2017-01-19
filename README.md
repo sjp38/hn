@@ -18,16 +18,16 @@ Basic usage is `hn [options]`.  With no option, it will print out top ten
 stories of hacker news in simple form like below:
 ```
 $ hn
-[1] Three.js editor (139)
-[2] What Could Have Entered the Public Domain on January 1, 2017 (416)
-[3] Ask HN: Excluding WordPress, what is your favorite for blogs or small stores? (56)
-[4] Why do traders in investment banks feel their jobs are immune from AI, etc? (113)
-[5] Recreating 3D renderings in real life (166)
-[6] IR is better than assembly (2013) (129)
-[7] Lenovo ThinkPad T460 – A Good Linux Laptop for Development (125)
-[8] The moving sofa problem (526)
-[9] Ask HN: What is your side project for 2017? (19)
-[10] How I Write Tests (255)
+[1] U.S. sues Oracle, alleges salary and hiring discrimination (247)
+[2] What I Wish I'd Known About Equity Before Joining a Unicorn (933)
+[3] Too much sitting, too little exercise accelerate biological aging (12)
+[4] PyTorch – Tensors and Dynamic neural networks in Python (313)
+[5] Welcoming Fabric to Google (248)
+[6] Caching at Reddit (147)
+[7] Rust vs. Go (303)
+[8] How the Human Brain Decides What Is Important and What’s Not (32)
+[9] Go vs. Swift [pdf] (50)
+[10] Iceland knows how to stop teen substance abuse (67)
 ```
 
 Number inside parantheses is the HN score of the story.
@@ -65,47 +65,45 @@ can also show more detailed information including URLs for each story using
 `-showURLs` option as below:
 ```
 $ go run hn.go -showURLs
-# 10 top stories
+[1] U.S. sues Oracle, alleges salary and hiring discrimination (247)
+(http://www.reuters.com/article/us-oracle-usa-labor-idUSKBN1522O6?il=0)
+(https://news.ycombinator.com/item?id=13430222)
 
-[1] Three.js editor (143)
-[https://threejs.org/editor/]
-[https://news.ycombinator.com/item?id=13299479]
+[2] What I Wish I'd Known About Equity Before Joining a Unicorn (934)
+(https://gist.github.com/yossorion/4965df74fd6da6cdc280ec57e83a202d)
+(https://news.ycombinator.com/item?id=13426494)
 
-[2] What Could Have Entered the Public Domain on January 1, 2017 (418)
-[https://web.law.duke.edu/cspd/publicdomainday/2017/pre-1976]
-[https://news.ycombinator.com/item?id=13297792]
+[3] Too much sitting, too little exercise accelerate biological aging (13)
+(http://sciencebulletin.org/archives/9448.html)
+(https://news.ycombinator.com/item?id=13431806)
 
-[3] Ask HN: Excluding WordPress, what is your favorite for blogs or small stores? (57)
-[]
-[https://news.ycombinator.com/item?id=13300023]
+[4] PyTorch – Tensors and Dynamic neural networks in Python (313)
+(http://pytorch.org/)
+(https://news.ycombinator.com/item?id=13428098)
 
-[4] Why do traders in investment banks feel their jobs are immune from AI, etc? (114)
-[https://www.quora.com/Why-do-traders-in-investment-banks-feel-their-jobs-are-immune-from-AI-automation-and-deep-learning]
-[https://news.ycombinator.com/item?id=13299311]
+[5] Welcoming Fabric to Google (249)
+(https://firebase.googleblog.com/2017/01/FabricJoinsGoogle17.html)
+(https://news.ycombinator.com/item?id=13428595)
 
-[5] Recreating 3D renderings in real life (168)
-[http://skrekkogle.com/still-file/]
-[https://news.ycombinator.com/item?id=13298004]
+[6] Caching at Reddit (147)
+(https://redditblog.com/2017/1/17/caching-at-reddit/)
+(https://news.ycombinator.com/item?id=13429314)
 
-[6] IR is better than assembly (2013) (129)
-[https://idea.popcount.org/2013-07-24-ir-is-better-than-assembly/]
-[https://news.ycombinator.com/item?id=13297424]
+[7] Rust vs. Go (303)
+(https://blog.ntpsec.org/2017/01/18/rust-vs-go.html)
+(https://news.ycombinator.com/item?id=13430108)
 
-[7] Lenovo ThinkPad T460 – A Good Linux Laptop for Development (127)
-[https://karussell.wordpress.com/2017/01/02/lenovo-thinkpad-t460-a-good-linux-laptop-for-development/]
-[https://news.ycombinator.com/item?id=13299585]
+[8] How the Human Brain Decides What Is Important and What’s Not (32)
+(http://neurosciencenews.com/importance-neuroscience-decisions-5967/)
+(https://news.ycombinator.com/item?id=13430892)
 
-[8] The moving sofa problem (527)
-[https://www.math.ucdavis.edu/~romik/movingsofa/]
-[https://news.ycombinator.com/item?id=13296502]
+[9] Go vs. Swift [pdf] (50)
+(https://github.com/jakerockland/go-vs-swift/blob/master/go-vs-swift.pdf)
+(https://news.ycombinator.com/item?id=13430640)
 
-[9] Ask HN: What is your side project for 2017? (21)
-[]
-[https://news.ycombinator.com/item?id=13300178]
-
-[10] Swiss say goodbye to banking secrecy (47)
-[http://www.swissinfo.ch/eng/business/tax-evasion_swiss-say-goodbye-to-banking-secrecy-/42799134]
-[https://news.ycombinator.com/item?id=13298021]
+[10] Iceland knows how to stop teen substance abuse (67)
+(https://mosaicscience.com/story/iceland-prevent-teen-substance-abuse)
+(https://news.ycombinator.com/item?id=13430547)
 ```
 
 
