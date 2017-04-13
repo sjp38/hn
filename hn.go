@@ -122,7 +122,7 @@ func main() {
 
 	for i := 0; i < *nrItems; i++ {
 		item := <-chans[i]
-		output += fmt.Sprintf("[%d] %s (%d)\n",
+		output += fmt.Sprintf("[%02d] %s (%d)\n",
 			i+1, item.Title, item.Score)
 		if *showOrigURL {
 			output += strings.Repeat(" ",
